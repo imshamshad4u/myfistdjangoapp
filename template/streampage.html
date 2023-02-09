@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+    <section id="room-name-wrapper">
+        <p>Room Name: <span id="room-name"></span></p>
+    </section>
+
+    <section id="video-streams">
+        <!-- <div class="video-container" id="user-container-1">
+            <div class="username-wrapper"><span class=user-name>myname</span></div>
+            <div class="video-player" id="user-1"></div>
+        </div> -->
+        <!-- <div class="video-container" id="user-container-1">
+            <div class="username-wrapper"><span class=user-name>myname</span></div>
+            <div class="video-player" id="user-1"></div>
+        </div> -->
+
+
+
+
+
+    </section>
+    <section id="controls-wrapper">
+        <div class="icon-wrapper">
+            <img class="control-icon" id="mic-btn" src="{% static 'img/mic.jpg' %}" />
+        </div>
+
+        <div class="icon-wrapper">
+            <img class="control-icon" id="camera-btn" src="{% static 'img/videochaticon.png' %}" />
+        </div>
+
+        <div class="icon-wrapper">
+            <img class="control-icon" id="leave-btn" src="{% static 'img/leaveimage.png' %}" />
+        </div>
+    </section>
+    <!-- message section -->
+    <h1>welcome to real time messeging):</h1>
+    <!-- <form action="" type="submit" class="message-form">
+
+        <section class="send-messege">
+            <div class="chat-message">
+                <label for="" id="user-id">User Id:</label>
+                <input type="text" placeholder="user id...">
+            </div>
+            <div class="login">
+                <button type="submit" id="login">login</button>
+                <button type="submit" id="logout">logout</button>
+            </div>
+            <div id="messsegcontainer">
+                <input type="text" placeholder="enter message..."/>
+                <button>sendmessege</button>
+                
+            </div>
+            <label for="" >You sent:</label>
+            <label for=""   id="showmessage" > message </label>
+            <div id="log"></div>
+        </section>
+        
+    </form> -->
+    What chat room would you like to enter?<br>
+    <input id="room-name-input" type="text" size="50"><br>
+    <input id="room-name-submit" type="button" value="Enter">
+
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname =  roomName + '/','_self';   
+        };
+    </script>
+    
+    <button type="submit" id="testbutton">go to home</button>
+
+</main>
+
+<script type="text/javascript" src="{% static 'api/AgoraRTC_N-4.15.0.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascripts/scripts.js' %}"></script>
+{% endblock content %}
